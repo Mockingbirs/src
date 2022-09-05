@@ -10,7 +10,18 @@ public class LgTV implements TV {
 	}
 
 	public void setSpeaker(Speaker speaker) {
+		System.out.println("setSpeaker() 메서드 호출.");
 		this.speaker = speaker;
+	}
+	
+	
+
+	public void setPrice(int price) {
+		System.out.println("setPrice() 메서드 호출.");
+
+		this.price = price;
+		
+		System.out.println( "price : "+this.price +"원");
 	}
 
 	public void powerOn() {
