@@ -1,0 +1,52 @@
+package ex05.springcontainer.di.setter;
+
+public class LgTV implements TV {
+	
+	
+	Speaker speaker;
+	int price;
+
+	public LgTV() {
+		
+	}
+
+	
+	public LgTV(Speaker speaker) {
+	
+		this.speaker = speaker;
+	}
+
+	
+		public LgTV(Speaker speaker, int price) {
+
+		this.speaker = speaker;
+		this.price = price;
+		System.out.println("price : "+this.price+"원");
+	}
+
+
+	public void powerOn() {
+		
+		System.out.println("LgTV power On.");
+
+	}
+
+
+	public void powerOff() {
+		
+		System.out.println("LgTV power Off.");
+	}
+
+	
+	public void volumeUp() {
+		
+		speaker.volumeUp();
+	}
+
+	@Override
+	public void volumeDown() {
+		
+		speaker.volumeDown();
+	}
+
+}

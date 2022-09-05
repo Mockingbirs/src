@@ -1,0 +1,10 @@
+package ex04.springcontainer.di.constructor;
+
+public class SonySpeaker {
+	
+	public SonySpeaker() {
+		System.out.println("SonySpeaker connection");
+		
+	}
+
+}
