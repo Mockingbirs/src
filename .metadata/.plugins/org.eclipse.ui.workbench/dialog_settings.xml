@@ -11,6 +11,8 @@
 		<list key="NewWizardSelectionPage.STORE_EXPANDED_CATEGORIES_ID">
 			<item value="org.springframework.ide.eclipse.beans.ui.wizards.category"/>
 			<item value="org.springsource.ide.eclipse.boot.wizards.category"/>
+			<item value="org.eclipse.datatools.sql"/>
+			<item value="org.eclipse.wst.XMLCategory"/>
 		</list>
 	</section>
 </section>

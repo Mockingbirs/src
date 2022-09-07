@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+	<bean id="collectionBean"
+		class="ex04.collection.properties.CollectionBean">
+		<property name="addressList">
+			<props>
+				<prop key="홍길동">서울시 마포구 합정동</prop>
+				<prop key="이순신">서울시 강남구 역삼동</prop>
+				<prop key="김이박">서울시 종로구 이화동</prop>
+			</props>
+		</property>
+	</bean>
+
+
+</beans>
