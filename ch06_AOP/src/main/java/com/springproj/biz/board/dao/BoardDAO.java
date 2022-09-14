@@ -28,18 +28,18 @@ public class BoardDAO { // DAO (Data Access Object)
 
 	private final String BOARD_GET = "SELECT * FROM board  WHERE seq = ?";
 
-	private final String BOARD_GETLIST = "SELECT * FROM board  ";
+	private final String BOARD_GETLIST = "SELECT * FROM board  ORDER BY seq ASC";
 
 	Connection conn;
 
 	@Autowired
 	private LogAdvice log;
-	
+
 	// 글 등록(insert문)
 	public void insertBoard(BoardVO vo) {
 
 		log.printLog(" = insertBoard =");
-		
+
 		conn = JDBCUtil.getConnection();
 
 		// Connection conn;
@@ -89,10 +89,10 @@ public class BoardDAO { // DAO (Data Access Object)
 	}
 
 	// 목록보기(select문)
-	public void getBoard(int seq) {
+	public BoardVO getBoard(int seq) {
 
 		log.printLog(" = getBoard =");
-		
+
 		conn = JDBCUtil.getConnection();
 
 		PreparedStatement pstmt = null;
@@ -104,41 +104,63 @@ public class BoardDAO { // DAO (Data Access Object)
 			pstmt.setInt(1, seq);
 
 			int result = pstmt.executeUpdate();
-			rs = pstmt.executeQuery();
 
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+			
+			BoardVO board = new BoardVO();
+			
+			board.setSeq(rs.getInt("seq"));
+			board.setTitle(rs.getString("title"));
+			board.setWriter(rs.getString("writer"));
+			board.setContent(rs.getString("content"));
+			board.setRegdate(rs.getDate("regdate"));
+			board.setCnt(rs.getInt("cnt"));
+			
+			
+			return board;
+			}
+			
 			/*
-			  int seq1 = rs.getInt(1); String title = rs.getString(2); String writer =
-			  rs.getString(3); String content = rs.getString(4); Date regdate =
-			  rs.getDate(5); int cnt = rs.getInt(6);
+			 * if (rs.next()) { System.out.println("seq = " + rs.getInt(1) + ", title = " +
+			 * rs.getString(2) + ", writer = " + rs.getString(3) + ", content = " +
+			 * rs.getString(4) + ", regdate = " + rs.getDate(5) + ", cnt = " +
+			 * rs.getInt(6));
+			 * 
+			 * }
+			 */
+			
+			/*
+			 * if (result == 1) { System.out.println("===> 데이터 정보 불러오기 성공");
+			 * 
+			 * } else { System.out.println("===> 데이터 정보 불러오기 실패"); }
 			 */
 
-			
-			
-			//BoardVO board = new BoardVO(seq1, title, writer, content, regdate, cnt);
-
-			// return board;
-
-			if (result == 1) {
-				System.out.println("===> 데이터 정보 불러오기 성공");
-				System.out.println(rs);
-			} else {
-				System.out.println("===> 데이터 정보 불러오기 실패");
-			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			
+			return null;
 
 		} finally {
 
 			JDBCUtil.close(pstmt, conn);
 		}
-
+		return null;
 	}
 
+	
+	
+	
+	
+	
+	
+	
 	public void getBoardList() {
 
 		log.printLog(" = getBoardList =");
-		
+
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 
@@ -151,18 +173,15 @@ public class BoardDAO { // DAO (Data Access Object)
 			int result = pstmt.executeUpdate();
 			rs = pstmt.executeQuery();
 
-			//ArrayList<BoardVO> boards = new ArrayList<BoardVO>();
-
 			while (rs.next()) {
-		//		boards.add(new BoardVO(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getDate(5),
-			//			rs.getInt(6)));
-				System.out.println(rs);
+
+				System.out.println("seq = " + rs.getInt(1) + ", title = " + rs.getString(2) + ", writer = "
+						+ rs.getString(3) + ", content = " + rs.getString(4) + ", regdate = " + rs.getDate(5)
+						+ ", cnt = " + rs.getInt(6));
 
 			}
 
-			// return board;
-
-			if (result == 1) {
+			if (result >= 1) {
 				System.out.println("===> 데이터 정보 불러오기 성공");
 			} else {
 				System.out.println("===> 데이터 정보 불러오기 실패");
@@ -172,14 +191,14 @@ public class BoardDAO { // DAO (Data Access Object)
 			e.printStackTrace();
 		} finally {
 
-			JDBCUtil.close(pstmt, conn);
+			JDBCUtil.close(pstmt, conn, rs);
 		}
 
 	}
 
 	// 글 수정(update문)
 	public void updateBoard(BoardVO vo) {
-		
+
 		log.printLog(" = updateBoard =");
 
 		conn = JDBCUtil.getConnection();

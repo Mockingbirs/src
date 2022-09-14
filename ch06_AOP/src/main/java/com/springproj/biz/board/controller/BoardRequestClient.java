@@ -10,49 +10,59 @@ public class BoardRequestClient {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+
+		AbstractApplicationContext factory = new GenericXmlApplicationContext("applicationContext.xml");
+
+		BoardService service = (BoardService) factory.getBean("boardService");
+
+		// Spring 사용으로 인한 IoC 인스턴트 생성을 위해 주석처리
+		// BoardserviceImpl service = new BoardserviceImpl();
+
 		
-		AbstractApplicationContext factory
-		= new GenericXmlApplicationContext("applicationContext.xml");
+		//게시글 작성
+		  BoardVO vo = new BoardVO();
+		  
+		  vo.setTitle("오류 게시글"); vo.setWriter("김오류"); vo.setContent("드디어 나도 오류.");
+		  
+		  service.insertService(vo);
+		 
 		
-		BoardService service 
-		=(BoardService)factory.getBean("boardService");
-		
-		//BoardserviceImpl service = new BoardserviceImpl();
-		
-		
-		/*
-		 * BoardVO vo = new BoardVO();
-		 * 
-		 * vo.setTitle("첫번째 게시글"); vo.setWriter("홍길동"); vo.setContent("드디어 나는 개발자.");
-		 * 
-		 * service.insertService(vo);
-		 */
+		  // beforeLog사용으로 따로 출력할 필요가 없어짐
+		  // System.out.println(vo);  
+		 
 		
 		
-		/*
-		 * BoardVO vo2 = new BoardVO();
-		 * 
-		 * vo2.setTitle("게시글 수정"); vo2.setContent("드디어 나는 개발자."); vo2.setSeq(1);
-		 * 
-		 * service.updateService(vo2);
-		 */
+		
+		//게시글 수정
+//		  BoardVO vo2 = new BoardVO();
+//		  
+//		  vo2.setTitle("첫번째 게시글"); vo2.setContent("드디어 나는 개발자."); vo2.setSeq(2);
+//		  
+//		  service.updateService(vo2);
+//		 
+		
+		
 		
 		
 
 		
-		/* service.deleteService(4); */
 		
-		service.getService(4);		
+		//게시글 불러오기
+		//BoardVO board = service.getService(1);   System.out.println(board); 
 		
 		
 		
+		//게시글 목록보기
+		//service.getServiceList();
+		
+		
+		
+		//게시글 삭제
+				// service.deleteService(4);
+		
+
 		factory.close();
-		
-		
-		
-		
-		
-		
+
 	}
 
 }

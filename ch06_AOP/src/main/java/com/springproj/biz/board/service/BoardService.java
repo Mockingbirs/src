@@ -9,7 +9,7 @@ public interface BoardService {
 	void insertService(BoardVO vo);
 	
 	// 글 목록 조회
-	void getService(int seq);
+	BoardVO getService(int seq);
 	
 	void getServiceList();
 	

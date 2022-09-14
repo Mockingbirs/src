@@ -5,7 +5,6 @@ import org.springframework.stereotype.Service;
 
 import com.springproj.biz.board.BoardVO;
 import com.springproj.biz.board.dao.BoardDAO;
-import com.springproj.biz.common.LogAdvice;
 
 @Service("boardService")
 public class BoardserviceImpl implements BoardService {
@@ -13,34 +12,43 @@ public class BoardserviceImpl implements BoardService {
 	@Autowired
 	private BoardDAO dao;
 	
-	@Autowired
+	
 	//private Log4jAdvice log;
-	private LogAdvice log;
+	//private LogAdvice log;
 
 
 	@Override
 	public void insertService(BoardVO vo) {
 		// TODO Auto-generated method stub
 		
-		log.printLog(" = insertService =");
+		//log.printLog(" = insertService ="); 
 		//log.printLogging(" = insertService =");
+		
+//		if(vo.getSeq() == 0) {
+//			throw new IllegalArgumentException("0번 글은 등록할 수 없습니다.");
+//			
+//		}
+		
 		dao.insertBoard(vo);
 	}
 
 	@Override
-	public void getService(int seq) {
+	public BoardVO getService(int seq) {
 		// TODO Auto-generated method stub
 		
-		log.printLog(" = getService =");
+		//log.printLog(" = getService =");
 		
-		dao.getBoard(seq);
+		//dao.getBoard(seq);
+		BoardVO board = dao.getBoard(seq);
+		
+		return board;
 	}
 
 	@Override
 	public void getServiceList() {
 		// TODO Auto-generated method stub
 		
-		log.printLog(" = getService =");
+		//log.printLog(" = getService =");
 		
 		dao.getBoardList();
 	}
@@ -49,7 +57,7 @@ public class BoardserviceImpl implements BoardService {
 	public void updateService(BoardVO vo) {
 		// TODO Auto-generated method stub
 		
-		log.printLog(" = updateService =");
+		//log.printLog(" = updateService =");
 		
 		dao.updateBoard(vo);
 		
@@ -59,7 +67,7 @@ public class BoardserviceImpl implements BoardService {
 	public void deleteService(int seq) {
 		// TODO Auto-generated method stub
 		
-		log.printLog(" = deleteService =");
+		//log.printLog(" = deleteService =");
 		
 		dao.deleteBoard(seq);
 	}
