@@ -13,12 +13,9 @@ public class BoardDAO { // DAO (Data Access Object)
 
 	// CRUD (Create Read Update Delete) 기능의 메서드 구현
 	
-	/*
+
 	private final String BOARD_INSERT = "INSERT into board(seq, title, writer, content) values("
 			+ "(select nvl(max(seq),0)+1 from board),?,?,?)";
-	*/
-	private final String BOARD_INSERT = "INSERT into board(seq, title, writer, content) values("
-			+ "?,?,?,?)";
 	
 	private final String BOARD_UPDATE = "UPDATE board set title= ?, content = ? WHERE seq = ?";
 
@@ -26,7 +23,7 @@ public class BoardDAO { // DAO (Data Access Object)
 
 	private final String BOARD_GET = "SELECT * FROM board  WHERE seq = ?";
 
-	private final String BOARD_GETLIST = "SELECT * FROM board  ORDER BY seq ASC";
+	private final String BOARD_GETLIST = "SELECT * FROM board  ORDER BY seq DESC";
 
 	
 	
@@ -37,8 +34,8 @@ public class BoardDAO { // DAO (Data Access Object)
 
 	// 글 등록(insert문)
 	public void insertBoard(BoardVO vo) {
-		//Object[] args = {vo.getTitle(), vo.getWriter(), vo.getContent()};
-		Object[] args = {vo.getSeq(), vo.getTitle(), vo.getWriter(), vo.getContent()};
+		Object[] args = {vo.getTitle(), vo.getWriter(), vo.getContent()};
+		//Object[] args = {vo.getSeq(), vo.getTitle(), vo.getWriter(), vo.getContent()};
 		
 		jdbcTemplate.update(BOARD_INSERT, args);
 		

@@ -33,8 +33,7 @@ public class BoardserviceImpl implements BoardService {
 		}
 		//*/
 		dao.insertBoard(vo);
-		System.out.println("1회수행");
-		dao.insertBoard(vo);
+	
 	}
 
 	@Override
