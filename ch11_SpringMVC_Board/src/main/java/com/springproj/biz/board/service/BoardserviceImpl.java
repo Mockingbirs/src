@@ -44,6 +44,11 @@ public class BoardserviceImpl implements BoardService {
 		
 		//dao.getBoard(seq);
 		BoardVO board = dao.getBoard(seq);
+//		int cnt = board.getCnt();
+//		
+//		board.setCnt(cnt+1);
+		
+		dao.cntupBoard(board);
 		
 		return board;
 	}

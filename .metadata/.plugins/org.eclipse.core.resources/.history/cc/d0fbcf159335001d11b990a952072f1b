@@ -1,0 +1,5 @@
+package com.springproj.controller;
+
+public class LogInOutController {
+
+}

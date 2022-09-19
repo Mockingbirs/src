@@ -1,0 +1,17 @@
+1663300760441	Delete elements
+1663300777125	Rename type 'InsertBoardController'
+1663311103706	Move compilation unit
+1663311109184	Delete element
+1663311155214	Delete element
+1663311234661	Rename package 'com.springproj.biz.board.service'
+1663311302359	Move compilation unit
+1663311395579	Rename package 'com.springproj.service'
+1663311409757	Rename package 'com.springproj.serviceimpl'
+1663311699810	Rename package 'com.springproj.biz.board'
+1663314255448	Move 'login.jsp' to 'views'
+1663315455690	Rename package 'com.springproj.biz.board.dao'
+1663316094247	Rename type 'BoardRowMapper'
+1663316130207	Rename type 'RowMapper'
+1663316289039	Rename type 'MapperRow'
+1663316426840	Copy compilation unit
+1663317320969	Delete element

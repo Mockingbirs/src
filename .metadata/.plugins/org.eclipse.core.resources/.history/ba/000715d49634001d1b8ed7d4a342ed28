@@ -1,0 +1,32 @@
+<%@page import="com.springproj.biz.board.BoardVO"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    
+    
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>글 목록</title>
+</head>
+<body>
+
+${boardList}
+
+<table>
+<tr>
+<td>
+<%for(BoardVO board :%>${boardList} <%) {
+System.out.print(board);
+};
+%>
+
+</td>
+</tr>
+
+</table>
+
+
+
+</body>
+</html>

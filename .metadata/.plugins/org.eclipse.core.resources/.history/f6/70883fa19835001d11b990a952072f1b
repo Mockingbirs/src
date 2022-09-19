@@ -1,0 +1,27 @@
+package com.springproj.biz.dao;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import org.springframework.jdbc.core.RowMapper;
+
+import com.springproj.biz.domain.UserVO;
+
+public class UserRowMapper implements RowMapper<UserVO>{
+
+	@Override
+	public UserVO mapRow(ResultSet rs, int rowNum) throws SQLException {
+		// TODO Auto-generated method stub
+		
+		UserVO user = new UserVO();
+		user.setSeq(rs.getInt("seq"));
+		user.setTitle(rs.getString("Title"));
+		board.setWriter(rs.getString("Writer"));
+		board.setContent(rs.getString("content"));
+		board.setRegdate(rs.getDate("regdate"));
+		board.setCnt(rs.getInt("cnt"));
+		
+		return board;
+	}
+
+}

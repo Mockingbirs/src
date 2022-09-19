@@ -1,0 +1,124 @@
+package com.springproj.biz.board.controller;
+
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.springproj.biz.board.BoardVO;
+import com.springproj.biz.board.service.BoardService;
+
+
+@Controller
+public class BoardController {
+
+	@Autowired
+	BoardService boardService;
+	
+	//@RequestMapping(value = "/insertBoard.do" , method = RequestMethod.GET)
+	@GetMapping("/insertBoard.do")
+	public String insertBoard(){
+		// TODO Auto-generated method stub
+		
+		//System.out.println("insertBoardController");
+		
+			
+		return "insertBoard";
+	}
+
+	//@RequestMapping(value = "/insertBoard.do", method = RequestMethod.POST)
+	@PostMapping("/insertBoard.do")
+	//public ModelAndView insertBoardProc(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public String insertBoard(BoardVO board){
+		// TODO Auto-generated method stub
+		
+		//System.out.println("insertBoardProcController");
+				
+		boardService.insertService(board);
+
+		
+		return "redirect:getBoardList.do";
+	}
+	
+	@RequestMapping(value ="/getBoard.do")
+	public ModelAndView getBoard(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		
+		//System.out.println("GetBoardController 처리.");
+		
+		String seq = request.getParameter("seq");
+		
+		
+		BoardVO board = boardService.getService(Integer.parseInt(seq));
+		
+		ModelAndView mav = new ModelAndView();
+		
+		mav.addObject("board", board);
+		mav.setViewName("getBoard");
+		
+		return mav;
+	}
+	
+	
+	@RequestMapping(value = "/getBoardList.do")
+	public ModelAndView getBoardList(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		
+		System.out.println("글 목록 검색 처리");
+		
+		List<BoardVO> list =boardService.getServiceList();
+		
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("boardList",list);
+		mav.setViewName("getBoardList");
+		
+		
+		return mav;
+	}
+	
+	
+	@RequestMapping(value = "/updateBoard.do")
+	public ModelAndView updateBoard(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		// TODO Auto-generated method stub
+		
+		String seq = request.getParameter("seq");
+		String title = request.getParameter("title");
+		String content =request.getParameter("content");
+		
+		BoardVO board = new BoardVO();
+		board.setSeq(Integer.parseInt(seq));
+		board.setTitle(title);
+		board.setContent(content);
+		
+		boardService.updateService(board);
+		
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("redirect:getBoard.do?seq="+seq);
+		
+		return mav;
+	}
+	
+	@RequestMapping(value = "/deleteBoard.do")
+	public ModelAndView deleteBoard(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		// TODO Auto-generated method stub
+		
+		String seq = request.getParameter("seq");
+		
+		boardService.deleteService(Integer.parseInt(seq));
+		
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("redirect:getBoardList.do");
+		
+		return mav;
+	}
+	
+	
+	
+	
+}

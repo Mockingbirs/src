@@ -1,0 +1,15 @@
+package com.springproj.biz.dao;
+
+import org.springframework.stereotype.Repository;
+
+@Repository("userDAO")
+public class UserDAO {
+	
+	// CRUD 기능의 메소드 구현
+	// 회원 상세 정보
+	
+	public UserVO getUser() {
+		
+	}
+
+}

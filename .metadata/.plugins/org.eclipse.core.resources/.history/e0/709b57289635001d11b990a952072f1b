@@ -1,0 +1,10 @@
+package com.springproj.biz.board.dao;
+
+import org.springframework.stereotype.Repository;
+
+@Repository("userDAO")
+public class UserDAO {
+	
+	
+
+}

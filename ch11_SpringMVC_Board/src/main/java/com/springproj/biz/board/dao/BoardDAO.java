@@ -25,7 +25,7 @@ public class BoardDAO { // DAO (Data Access Object)
 
 	private final String BOARD_GETLIST = "SELECT * FROM board  ORDER BY seq DESC";
 
-	
+	private final String BOARD_CNTUP = "UPDATE board set cnt= cnt+1 WHERE seq = ?";
 	
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
@@ -81,5 +81,15 @@ public class BoardDAO { // DAO (Data Access Object)
 		jdbcTemplate.update(BOARD_DELETE, seq);
 		
 	}
+	
+	//글 조회수 증가
+	public void cntupBoard(BoardVO vo) {
+		Object[] args = {vo.getSeq()};
+		jdbcTemplate.update(BOARD_CNTUP, args);
+		
+		
+		
+	}
+
 
 }

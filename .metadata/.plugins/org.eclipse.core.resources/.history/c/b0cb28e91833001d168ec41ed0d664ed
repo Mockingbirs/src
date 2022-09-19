@@ -1,0 +1,5 @@
+package com.springproj.biz.board.dao;
+
+public class BoardRowMapper implements RowMapper<BoadrVO>{
+
+}

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;ch08_SpringJDBC/src/main/resources/cofig&apos; to &apos;config&apos;" description="Rename resource &apos;cofig&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/main/resources/cofig" name="config" stamp="1663048658319" updateReferences="true"/>
+</session>
