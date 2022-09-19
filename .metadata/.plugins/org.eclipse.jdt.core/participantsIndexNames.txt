@@ -15,6 +15,8 @@ C:\workspaces\spring\src\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1
 \ch14_SpringMVC_Board_FileUpload\src\main\java
 C:\workspaces\spring\src\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\134520004.index
 \ch14_SpringMVC_Board_FileUpload\src\main\java
+C:\workspaces\spring\src\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\4111001478.index
+\ch15_SpringMVC_Board_Exception\src\main\java
 C:\workspaces\spring\src\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1724792226.index
 \ch03_DI_Collection\src\main\java
 C:\workspaces\spring\src\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3955845736.index
@@ -39,5 +41,7 @@ C:\workspaces\spring\src\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\6
 \ch06_AOP\src\main\java
 C:\workspaces\spring\src\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3686964319.index
 \ch04_DI_Annotation\src\main\java
+C:\workspaces\spring\src\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2807798963.index
+\ch15_SpringMVC_Board_Exception\src\main\java
 C:\workspaces\spring\src\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1033796080.index
 \ch12_SpringMVC_Board_Annotation\src\main\java

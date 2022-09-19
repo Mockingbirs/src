@@ -20,3 +20,5 @@ Sep 15, 2022 10:36:57.841 [10352:1748:0915/103657.841:ERROR:device_event_log_imp
 9월 19, 2022 15:19:26.679 [3732:4656:0919/151926.678:ERROR:device_event_log_impl.cc(214)] [15:19:26.678] Bluetooth: bluetooth_adapter_winrt.cc:1074 Getting Default Adapter failed.
 9월 19, 2022 15:39:22.301 [9040:7876:0919/153922.301:ERROR:device_event_log_impl.cc(214)] [15:39:22.301] Bluetooth: bluetooth_adapter_winrt.cc:1074 Getting Default Adapter failed.
 9월 19, 2022 15:49:01.885 [9040:3796:0919/154901.884:ERROR:mcs_client.cc(756)] Received close command, resetting connection.
+9월 19, 2022 17:00:39.92 [10948:8404:0919/170039.092:ERROR:device_event_log_impl.cc(214)] [17:00:39.092] Bluetooth: bluetooth_adapter_winrt.cc:1074 Getting Default Adapter failed.
+9월 19, 2022 18:05:59.529 [8068:1164:0919/180559.528:ERROR:device_event_log_impl.cc(214)] [18:05:59.528] Bluetooth: bluetooth_adapter_winrt.cc:1074 Getting Default Adapter failed.

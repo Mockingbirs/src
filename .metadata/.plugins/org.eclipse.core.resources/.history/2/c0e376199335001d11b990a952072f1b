@@ -1,8 +1,0 @@
-package com.springproj.controller;
-
-import org.springframework.stereotype.Controller;
-
-@Controller
-public class LogInOutController {
-
-}
