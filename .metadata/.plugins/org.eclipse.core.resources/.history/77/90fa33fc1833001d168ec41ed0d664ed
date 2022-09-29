@@ -1,9 +1,0 @@
-package com.springproj.biz.board.dao;
-
-import org.springframework.jdbc.core.RowMapper;
-
-import com.springproj.biz.board.BoardVO;
-
-public class BoardRowMapper implements RowMapper<BoardVO>{
-
-}

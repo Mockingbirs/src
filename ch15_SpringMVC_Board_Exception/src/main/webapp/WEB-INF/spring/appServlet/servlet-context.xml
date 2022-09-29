@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans:beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:mvc="http://www.springframework.org/schema/mvc"
+<beans:beans
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.springframework.org/schema/mvc"
 	xmlns:beans="http://www.springframework.org/schema/beans"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xsi:schemaLocation="http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
@@ -14,8 +15,9 @@
 		base-package="com.springproj.controller" />
 
 	<!-- Enables the Spring MVC @Controller programming model -->
-	 <annotation-driven /> 
-	 
+	<annotation-driven />
+
+
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving 
 		up static resources in the ${webappRoot}/resources directory -->
 	<resources mapping="/resources/**" location="/resources/" />
@@ -34,7 +36,24 @@
 		<beans:property name="maxUploadSize" value="100000" />  <!--default = -1로 되어있다. -1은 크기가 제한되지 않는다. -->
 	</beans:bean>
 
-	<!-- 예외 처리 @ExceptionHandler -->
-	<mvc:annotation-driven></mvc:annotation-driven>
+	<!-- xml 기반의 예외 처리 -->
+	<beans:bean id="exceptionResolver"
+		class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+		<beans:property name="exceptionMappings">
+			<beans:props>
+			<!-- 자료형의 전체 패키지 이름을 명시해 주어야 한다. -->
+			<beans:prop key="java.lang.ArithmeticException">
+			common/arithmeticError
+			</beans:prop>
+				<beans:prop key="java.lang.NullPointerException">
+			common/nullPointerError
+			</beans:prop>
+<!-- 				<beans:prop key="java.lang.Exception">
+			common/error
+			</beans:prop> -->
+			</beans:props>
+		</beans:property>
+		<beans:property name="defaultErrorView" value="common/error"></beans:property>
+	</beans:bean>
 
 </beans:beans>

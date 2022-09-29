@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Board">
+	<insert id="insertBoard">
+		<!-- 비교연산자 > < 는 엘리멘트로 인식 할 수 있기 때문에 <![CDATA[]]> 아래와 같이 처리한다 -->
+	<![CDATA[
+	INSERT into board(seq, title, writer, content)
+	values((select nvl(max(seq),0)+1 from board),#{title},#{writer},#{content}) 
+	]]>
+	</insert>
+
+	<select id="getBoard"
+		parameterType="com.springproj.biz.domain.BoardVO" resultType="board">
+	<![CDATA[
+	SELECT * FROM board  WHERE seq = #{seq}
+	]]>
+	</select>
+
+	<!-- <select id="getBoardList_T" parameterType="board" resultType="board"> 
+		<![CDATA[ SELECT * FROM board WHERE title like '%'||#{searchKeyword}||'%' 
+		ORDER BY seq DESC ]]> </select> <select id="getBoardList_C" resultType="board"> 
+		<![CDATA[ SELECT * FROM board WHERE content like '%'||#{searchKeyword}||'%' 
+		ORDER BY seq DESC ]]> </select> -->
+
+	<!-- Mybatis 에서만 제공하는 dynamic sql  단 CDATA는 사용 할 수 없다.(비교연산자가 들어가야하면 사용불가)-->
+	<select id="getBoardList" parameterType="board"
+		resultType="board">
+
+		SELECT *
+		FROM board
+		WHERE 1 = 1
+		<if test="searchCondition == 'TITLE'">
+			and title like '%'||#{searchKeyword}||'%'
+		</if>
+		<if test="searchCondition == 'CONTENT'">
+			and content like '%'||#{searchKeyword}||'%'
+		</if>
+		ORDER BY seq DESC
+
+	</select>
+
+
+
+	<update id="updateBoard">
+	<![CDATA[
+	UPDATE board set title= #{title}, content = #{content} WHERE seq = #{seq}
+	]]>
+	</update>
+
+	<delete id="deleteBoard">
+	<![CDATA[
+	DELETE FROM board  WHERE seq = #{seq}
+	]]>
+	</delete>
+
+
+</mapper>
+
+ 

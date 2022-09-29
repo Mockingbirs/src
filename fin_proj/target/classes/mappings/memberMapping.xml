@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Member">
+	<insert id="insertMember">
+		<!-- 비교연산자 > < 는 엘리멘트로 인식 할 수 있기 때문에 <![CDATA[]]> 아래와 같이 처리한다 -->
+	<![CDATA[
+	INSERT into member(m_no, m_id, m_password, m_name, m_email, m_tel, m_address)
+	values((select nvl(max(m_no),0)+1 from member),#{m_id},#{m_password},#{m_name},#{m_email},#{m_tel},#{m_address}) 
+	]]>
+	</insert>
+
+	<select id="getMember" resultType="member">
+	<![CDATA[
+	SELECT * FROM member  WHERE m_no = #{m_no}
+	]]>
+	</select>
+
+	<select id="getBoardList_T" resultType="member"> 
+		<![CDATA[ SELECT * FROM board WHERE title like '%'||#{searchKeyword}||'%' 
+		ORDER BY seq DESC ]]> </select> 
+		<select id="getBoardList_C" resultType="member"> 
+		<![CDATA[ SELECT * FROM board WHERE content like '%'||#{searchKeyword}||'%' 
+		ORDER BY seq DESC ]]> </select>
+
+	<!-- Mybatis 에서만 제공하는 dynamic sql  단 CDATA는 사용 할 수 없다.(비교연산자가 들어가야하면 사용불가)-->
+	<select id="getMemberList" resultType="member">
+
+		SELECT *
+		FROM member
+		WHERE 1 = 1
+		<if test="searchCondition == 'M_ID'">
+			and m_id like '%'||#{searchKeyword}||'%'
+		</if>
+		
+		ORDER BY m_no DESC
+
+	</select>
+
+
+
+	<update id="updateMember">
+	<![CDATA[
+	UPDATE member set m_id= #{m_id}, m_password = #{m_password} WHERE m_no = #{m_no}
+	]]>
+	</update>
+
+	<delete id="deleteMember">
+	<![CDATA[
+	DELETE FROM member  WHERE m_no = #{m_no}
+	]]>
+	</delete>
+
+
+</mapper>
+
+ 

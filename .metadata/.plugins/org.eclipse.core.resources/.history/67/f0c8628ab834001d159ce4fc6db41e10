@@ -1,7 +1,0 @@
-package com.springproj.biz.board.controller;
-
-import org.springframework.web.servlet.mvc.Controller;
-
-public class GetBoardController implements Controller{
-
-}

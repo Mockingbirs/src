@@ -1,5 +1,0 @@
-package com.springproj.biz.serviceimpl;
-
-public class UserServiceImpl {
-
-}

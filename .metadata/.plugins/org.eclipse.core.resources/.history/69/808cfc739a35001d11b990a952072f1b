@@ -1,5 +1,0 @@
-package com.springproj.biz.service;
-
-public interface UserService {
-
-}

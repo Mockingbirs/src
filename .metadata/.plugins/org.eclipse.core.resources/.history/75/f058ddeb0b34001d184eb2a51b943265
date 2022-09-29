@@ -1,5 +1,0 @@
-driver=org.apache.commons.dbcp.BasicDataSource
-
-url=jdbc:oracle:thin:@localhost:1521:xe
-name=scott
-pw=tiger
